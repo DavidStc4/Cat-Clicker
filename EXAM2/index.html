@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <section>
+      <div class="main-content">
+        <div class="left">
+          <div class="cat-shop">
+            <h3>Cat Shop</h3>
+            <div class="cat-list" id="catList"></div>
+          </div>
+        </div>
+
+        <div class="center">
+          <div class="main-cat">
+            <h3>Cat: <span class="cat-cost">0</span></h3>
+            <img
+              src="/EXAM2/assets/cat_1.png"
+              alt="Cat Image"
+              class="cat-image"
+              id="mainCatImage"
+              draggable="false"
+            />
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="buff-menu">
+            <div class="menu-header" id="buffToggle">Buff Menu ▼</div>
+            <div class="menu-content">
+              <div class="buff-item auto-clicker" id="autoClickerBtn">
+                Locked Buff: Auto Click
+                <span class="dot hidden" id="buffDot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="achievements-shop">
+      <h3>Achievements</h3>
+      <div class="achievement-list" id="achievementList"></div>
+    </div>
+
+    <div id="achievementPopup" class="popup hidden">
+      <div class="popup-content">
+        <span class="close-popup" id="closePopupBtn">&times;</span>
+        <h4 id="popupTitle">Achievement Title</h4>
+        <p id="popupDescription">Description of achievement.</p>
+      </div>
+    </div>
+
+    <div id="toast" class="hidden"></div>
+    <div id="messageBox" class="hidden"></div>
+
+    <div class="sound-control">
+        <button id="soundToggle" class="sound-btn">🔊 Sound On</button>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" />
+      </div>
+
+    <audio id="clickSound" src="assets/music/mixkit-on-or-off-light-switch-tap-2585.mp3" preload="auto"></audio>
+    <audio id="bgMusic" src="assets/music/game-music-loop-3-144252.mp3" preload="auto" loop></audio>
+
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>

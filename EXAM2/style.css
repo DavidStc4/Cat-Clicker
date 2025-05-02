@@ -1,0 +1,407 @@
+/* === Base Layout === */
+body {
+    display: grid;
+    place-items: center;
+    height: 50rem;
+    margin: 0;
+    padding: 0;
+    background-color: #3a3a3a;
+    color: white;
+    user-select: none;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+}
+
+.left, .center, .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.left h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+/* === Cat Image === */
+.cat-image {
+    width: 500px;
+}
+
+.cat-image:hover {
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+.cat-image:active {
+    opacity: 0.9;
+    transform: scale(1.04);
+}
+
+/* === Buff Menu === */
+.buff-menu {
+    background-color: #4a4a4a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-header {
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.menu-content {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.buff-item {
+    padding: 15px;
+    background-color: #666;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.buff-item.unlocked {
+    opacity: 1;
+    background-color: #66bb6a;
+}
+
+.buff-item.active {
+    background-color: #66bb6a;
+    opacity: 1;
+}
+
+.buff-item.inactive {
+    background-color: #ef5350;
+    opacity: 1;
+}
+
+.dot {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffeb3b;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #ffeb3b;
+    z-index: 10;
+  }
+  
+  .buff-item {
+    position: relative; 
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+/* === +1 Animation === */
+.plus-one {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    animation: floatUp 1s ease-out forwards;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1000;
+}
+
+/* === Cat Shop === */
+.cat-shop {
+    background-color: #4a4a4a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.cat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cat-item {
+    background-color: #555;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.cat-item.unlocked {
+    opacity: 1;
+    background-color: #66bb6a;
+}
+
+.cat-item img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.cat-item.buyable {
+    background-color: #ffeb3b;
+    opacity: 1;
+    animation: pulse 1.2s infinite;
+}
+
+.cat-item.selected {
+    background-color: #66bb6a !important;
+    border: 2px solid white;
+    position: relative;
+}
+
+.cat-item.owned:not(.selected) {
+    background-color: #777 !important;
+    opacity: 1;
+}
+
+/* === Message Box === */
+#messageBox {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #ef5350;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 10000;
+}
+
+#messageBox.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+}
+
+/* === Achievements === */
+.achievements-shop {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90%;
+    background-color: #444;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #fff;
+    z-index: 1000;
+}
+
+.achievement-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.achievement-item {
+    background-color: #777;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: transform 0.3s;
+}
+
+.achievement-item.unlocked {
+    background-color: #4caf50 !important;
+    color: white;
+}
+
+.achievement-item.locked {
+    background-color: #555;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.achievement-item:hover:not(.locked) {
+    transform: scale(1.05);
+}
+
+/* === Achievement Popup === */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    min-width: 250px;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* === Toast Notification === */
+#toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #222;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    font-weight: bold;
+    opacity: 0;
+    z-index: 1001;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === Utility === */
+.hidden {
+    display: none;
+}
+
+/* === Sounds === */
+.sound-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    background-color: #444;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+  
+  .sound-btn {
+    font-size: 16px;
+    padding: 6px 12px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .sound-btn:hover {
+    background-color: #888;
+  }
+  
+  #volumeSlider {
+    width: 100px;
+    height: 6px;
+    background: #aaa;
+    border-radius: 4px;
+    outline: none;
+    accent-color: #66bb6a;
+  }
+  
+  
+/* === Animations === */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(1.5);
+    }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .cat-image {
+        width: 300px;
+    }
+
+    .buff-menu, .cat-shop {
+        width: 100%;
+    }
+}
