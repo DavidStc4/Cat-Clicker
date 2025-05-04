@@ -1,14 +1,18 @@
-/* === Base Layout === */
+/* === baza de layer === */
 body {
     display: grid;
     place-items: center;
-    height: 50rem;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #3a3a3a;
+    background-image: url('assets/prisonBackground.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
     user-select: none;
-}
+  }
 
 .main-content {
     display: grid;
@@ -37,9 +41,11 @@ body {
     margin-bottom: 50px;
 }
 
-/* === Cat Image === */
+/* === imagine pisica === */
 .cat-image {
     width: 500px;
+    height: 500px;
+    object-fit: cover;
 }
 
 .cat-image:hover {
@@ -52,7 +58,7 @@ body {
     transform: scale(1.04);
 }
 
-/* === Buff Menu === */
+/* === meniu de puteri === */
 .buff-menu {
     background-color: #4a4a4a;
     padding: 20px;
@@ -83,6 +89,7 @@ body {
     cursor: pointer;
     opacity: 0.7;
     transition: 0.3s;
+    position: relative; 
 }
 
 .buff-item.unlocked {
@@ -112,15 +119,12 @@ body {
     z-index: 10;
   }
   
-  .buff-item {
-    position: relative; 
-  }
-  
   .hidden {
     display: none;
   }
 
-/* === +1 Animation === */
+
+/* === animatie +1  === */
 .plus-one {
     position: absolute;
     color: white;
@@ -132,7 +136,7 @@ body {
     z-index: 1000;
 }
 
-/* === Cat Shop === */
+/* === Linella de pisici === */
 .cat-shop {
     background-color: #4a4a4a;
     padding: 15px;
@@ -163,8 +167,9 @@ body {
 }
 
 .cat-item img {
-    width: 60px;
-    height: auto;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -186,7 +191,27 @@ body {
     opacity: 1;
 }
 
-/* === Message Box === */
+.cat-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .prison-bars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 2;
+    transition: all 0.6s ease;
+  }
+  
+  .animate-exit {
+    animation: dropFade 0.6s forwards;
+  }
+
+/* === cutia de mesaje === */
 #messageBox {
     position: fixed;
     top: 20px;
@@ -209,7 +234,7 @@ body {
     transform: translateX(-50%) translateY(10px);
 }
 
-/* === Achievements === */
+/* === dostijenia === */
 .achievements-shop {
     position: fixed;
     bottom: 20px;
@@ -260,7 +285,7 @@ body {
     transform: scale(1.05);
 }
 
-/* === Achievement Popup === */
+/* === apare dostijenia === */
 .popup {
     position: fixed;
     top: 0;
@@ -298,7 +323,7 @@ body {
     cursor: pointer;
 }
 
-/* === Toast Notification === */
+/* === notificare toast (cand apesi pe ceva ce e locked apare popup) === */
 #toast {
     position: fixed;
     top: 20px;
@@ -320,12 +345,7 @@ body {
     transform: translateY(0);
 }
 
-/* === Utility === */
-.hidden {
-    display: none;
-}
-
-/* === Sounds === */
+/* === sunete === */
 .sound-control {
     position: fixed;
     bottom: 20px;
@@ -363,7 +383,7 @@ body {
   }
   
   
-/* === Animations === */
+/* === Animatii === */
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -390,7 +410,18 @@ body {
     }
 }
 
-/* === Responsive === */
+@keyframes dropFadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+  }
+  
+/* === responiv kinda === */
 @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
@@ -405,3 +436,9 @@ body {
         width: 100%;
     }
 }
+
+@media (min-width: 769px) {
+    .left {
+      margin-bottom: 120px; 
+    }
+  }

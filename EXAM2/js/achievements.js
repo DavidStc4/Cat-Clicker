@@ -1,5 +1,6 @@
 import { achievements } from './data.js';
 import { notifyUser, openAchievementPopup } from './ui.js';
+import { state } from './data.js';
 
 export function renderAchievements() {
   const list = document.getElementById('achievementList');
@@ -21,4 +22,12 @@ export function checkAchievements(clickCount) {
       renderAchievements();
     }
   });
+
+  if (clickCount >= 1500 && !state.gameCompleted) {
+    state.gameCompleted = true;
+    openAchievementPopup({
+      name: 'You Finished the Game!',
+      description: '🎉 Congratulations! You’ve reached 1500 clicks and completed the game. You can still continue playing and rescuing cats! 🐾'
+    });
+  }
 }

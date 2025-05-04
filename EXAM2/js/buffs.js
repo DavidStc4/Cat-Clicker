@@ -1,19 +1,20 @@
 import { state } from './data.js';
-import { updateClickDisplay } from './clicks.js';
+import { updateClickDisplay, incrementCat} from './clicks.js';
 import { showMessage } from './ui.js';
-import { incrementCat } from './clicks.js';
 import { checkAchievements } from './achievements.js';
+
 
 let autoClickerBought = false;
 let autoClickerActive = false;
 let autoClickerInterval = null;
 
+
 export function buySecClicker() {
   const button = document.getElementById('autoClickerBtn');
-  const cost = 10;
+  const cost = 20;
 
   if (!button.classList.contains('unlocked')) {
-    showMessage("You must reach 10 clicks to unlock this buff!", "error");
+    showMessage("You must reach 20 clicks to unlock this buff!", "error");
     return;
   }
 
@@ -45,3 +46,7 @@ export function buySecClicker() {
     }
   }
 }
+
+
+
+

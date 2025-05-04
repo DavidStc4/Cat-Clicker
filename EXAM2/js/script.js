@@ -1,8 +1,9 @@
 import { incrementCat } from './clicks.js';
 import { renderCatShop } from './cats.js';
 import { renderAchievements } from './achievements.js';
-import { buySecClicker } from './buffs.js';
+import { buySecClicker} from './buffs.js';
 import { closePopup } from './ui.js';
+
 
 export let soundOn = true;
 export const clickSound = document.getElementById('clickSound');

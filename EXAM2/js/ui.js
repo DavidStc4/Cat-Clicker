@@ -8,7 +8,7 @@ export function showMessage(text, type = 'error') {
     setTimeout(() => {
       messageBox.classList.remove('show');
       setTimeout(() => messageBox.classList.add('hidden'), 400);
-    }, 2000);
+    }, 3000);
   }
   
   export function notifyUser(message) {
@@ -27,12 +27,23 @@ export function showMessage(text, type = 'error') {
     const popup = document.getElementById('achievementPopup');
     const popupTitle = document.getElementById('popupTitle');
     const popupDescription = document.getElementById('popupDescription');
+  
     popupTitle.textContent = achievement.name;
-    popupDescription.textContent = achievement.unlocked
-      ? achievement.description
-      : 'Achievement locked. Keep clicking to unlock!';
+    popupDescription.textContent = achievement.description ||
+      (achievement.unlocked
+        ? achievement.description
+        : 'Achievement locked. Keep clicking to unlock!');
+  
+   
+    if (achievement.name.includes('Freed')) {
+      popup.classList.add('cat-popup'); 
+    } else {
+      popup.classList.remove('cat-popup');
+    }
+  
     popup.classList.remove('hidden');
   }
+  
   
   export function closePopup() {
     document.getElementById('achievementPopup').classList.add('hidden');

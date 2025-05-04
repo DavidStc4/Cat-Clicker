@@ -61,13 +61,36 @@
     <div id="messageBox" class="hidden"></div>
 
     <div class="sound-control">
-        <button id="soundToggle" class="sound-btn">🔊 Sound On</button>
-        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" />
-      </div>
+      <button id="soundToggle" class="sound-btn">🔊 Sound On</button>
+      <input
+        type="range"
+        id="volumeSlider"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.3"
+      />
+    </div>
 
-    <audio id="clickSound" src="assets/music/mixkit-on-or-off-light-switch-tap-2585.mp3" preload="auto"></audio>
-    <audio id="bgMusic" src="assets/music/game-music-loop-3-144252.mp3" preload="auto" loop></audio>
+    <audio
+      id="clickSound"
+      src="assets/music/mixkit-on-or-off-light-switch-tap-2585.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="bgMusic"
+      src="assets/music/game-music-loop-3-144252.mp3"
+      preload="auto"
+      loop
+    ></audio>
 
+    <script type="module" src="js/data.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/achievements.js"></script>
+    <script type="module" src="js/buffsUnlock.js"></script>
+    <script type="module" src="js/clicks.js"></script>
+    <script type="module" src="js/buffs.js"></script>
+    <script type="module" src="js/cats.js"></script>
     <script type="module" src="js/script.js"></script>
   </body>
 </html>

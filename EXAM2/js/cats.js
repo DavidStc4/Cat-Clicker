@@ -1,6 +1,6 @@
 import { cats, state } from './data.js';
 import { updateClickDisplay } from './clicks.js';
-import { showMessage } from './ui.js';
+import { showMessage, openAchievementPopup } from './ui.js';
 import { checkAchievements } from './achievements.js';
 
 export function renderCatShop() {
@@ -16,7 +16,10 @@ export function renderCatShop() {
     else if (state.clickCount >= cat.cost) div.classList.add('buyable');
 
     div.innerHTML = `
-      <img src="${cat.img}" alt="${cat.name}">
+      <div class="cat-wrapper">
+        <img class="cat-img" src="${cat.img}" alt="${cat.name}">
+        <img class="prison-bars ${cat.unlocked ? 'hidden' : ''}" src="assets/prisonBars.png" alt="bars">
+      </div>
       <div>${cat.name}</div>
       <div>${cat.unlocked ? 'Click to select' : `Cost: ${cat.cost}`}</div>
     `;
@@ -29,14 +32,35 @@ export function renderCatShop() {
         cats[index].unlocked = true;
         selectCat(index);
         checkAchievements(state.clickCount);
+        const rescueMessages = [
+  "Finally... someone realized I just wanted to be somewhere. Okay, thanks. I guess.",
+  "You're saving me from eating broccoli forever... Thank you! Now I can smile again, albeit in a weird way 🐱",
+  "Finally... someone realized I just wanted to be somewhere. Okay, thanks. I guess.",
+  "I stood alone in this empty world... until you came along. Thank you, now I can walk! 🐾",
+  "Together we spin into destiny. Thank you for freeing me, chosen one. 🌀🐈"
+];
+
+openAchievementPopup({
+  name: `${cat.name} Freed!`,
+  description: rescueMessages[index] || "You've rescued this cat!"
+});
       } else {
         showMessage(`Not enough clicks to buy ${cat.name}`, 'error');
       }
+
       renderCatShop();
       updateClickDisplay();
     };
 
     list.appendChild(div);
+    
+    if (cat.unlocked) {
+      const bars = div.querySelector('.prison-bars');
+      if (bars && !bars.classList.contains('hidden')) {
+        bars.classList.add('animate-exit');
+        setTimeout(() => bars.remove(), 600);
+      }
+    }
   });
 }
 
