@@ -1,16 +1,17 @@
+// js/cats.js
 import { cats, state } from './data.js';
 import { updateClickDisplay } from './clicks.js';
 import { showMessage, openAchievementPopup } from './ui.js';
 import { checkAchievements } from './achievements.js';
+import { saveState } from './storage.js';
 
-export function renderCatShop() {
+export const renderCatShop = () => {
   const list = document.getElementById('catList');
   list.innerHTML = '';
 
   cats.forEach((cat, index) => {
     const div = document.createElement('div');
     div.className = 'cat-item';
-
     if (cat === state.currentCat) div.classList.add('selected');
     else if (cat.unlocked) div.classList.add('owned');
     else if (state.clickCount >= cat.cost) div.classList.add('buyable');
@@ -32,28 +33,20 @@ export function renderCatShop() {
         cats[index].unlocked = true;
         selectCat(index);
         checkAchievements(state.clickCount);
-        const rescueMessages = [
-  "Finally... someone realized I just wanted to be somewhere. Okay, thanks. I guess.",
-  "You're saving me from eating broccoli forever... Thank you! Now I can smile again, albeit in a weird way 🐱",
-  "Finally... someone realized I just wanted to be somewhere. Okay, thanks. I guess.",
-  "I stood alone in this empty world... until you came along. Thank you, now I can walk! 🐾",
-  "Together we spin into destiny. Thank you for freeing me, chosen one. 🌀🐈"
-];
-
-openAchievementPopup({
-  name: `${cat.name} Freed!`,
-  description: rescueMessages[index] || "You've rescued this cat!"
-});
+        openAchievementPopup({
+          name: `${cat.name} Freed!`,
+          description: "You've rescued this cat!"
+        });
       } else {
         showMessage(`Not enough clicks to buy ${cat.name}`, 'error');
       }
-
       renderCatShop();
       updateClickDisplay();
+      saveState();
     };
 
     list.appendChild(div);
-    
+
     if (cat.unlocked) {
       const bars = div.querySelector('.prison-bars');
       if (bars && !bars.classList.contains('hidden')) {
@@ -62,9 +55,10 @@ openAchievementPopup({
       }
     }
   });
-}
+};
 
-export function selectCat(index) {
+export const selectCat = (index) => {
   state.currentCat = cats[index];
   document.getElementById('mainCatImage').src = state.currentCat.img;
-}
+  saveState();
+};

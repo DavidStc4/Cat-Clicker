@@ -60,6 +60,20 @@
     <div id="toast" class="hidden"></div>
     <div id="messageBox" class="hidden"></div>
 
+    <div id="authCard">
+      <form id="authForm" autocomplete="off">
+        <span class="auth-title">Profile</span>
+        <input id="authUser" name="username" type="text" placeholder="Username" required minlength="2" maxlength="20" />
+        <button id="authSubmit" type="submit">Sign in</button>
+        <button id="authMode" type="button" data-mode="login">Create account</button>
+      </form>
+    
+      <div id="authWho" class="hidden">
+        <span>Signed in as <strong id="whoName"></strong></span>
+        <button id="logoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+
     <div class="sound-control">
       <button id="soundToggle" class="sound-btn">🔊 Sound On</button>
       <input
@@ -92,5 +106,6 @@
     <script type="module" src="js/buffs.js"></script>
     <script type="module" src="js/cats.js"></script>
     <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/storage.js"></script>
   </body>
 </html>
