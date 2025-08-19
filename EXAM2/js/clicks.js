@@ -1,4 +1,4 @@
-// js/clicks.js
+
 import { state } from './data.js';
 import { checkAchievements } from './achievements.js';
 import { renderCatShop } from './cats.js';
